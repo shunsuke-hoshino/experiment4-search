@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang = "ja">
+
+<head>
+    <meta charset="utf-8">
+    <title>search</title>
+</head>
+<body>
+    <h1>{{title}}</h1>
+    <form action = "{% url 'index'%}" method="post">
+        {% csrf_token %}
+        キーワード<br>
+        <input type = "text" name="searchname">
+        <input type="submit" value = "検索">
+    </form>
+    履歴<br>
+        {% for item in data %}
+            {{ item.word }}<br>
+        {% endfor %}
+        </table>
+    </form>
+</body>
+</html>
