@@ -6,9 +6,11 @@ from .models import Word
 # Create your views here.
 
 def index(request):
-    form = SearchForm(request.POST)
-    searchname = form['searchname'].data or ''
-    print(str(searchname))
+    searchname = ''
+    if(request.method == 'POST'):
+        form = SearchForm(request.POST)
+        searchname = form['searchname'].data or '' #searchnameはindex.htmlの<input type = "text" name="searchname">と対応している
+        print(str(searchname))
     if(searchname != ''):
         data = Word(word=searchname)
         data.save()
