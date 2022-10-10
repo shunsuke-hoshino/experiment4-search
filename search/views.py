@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .forms import SearchForm
 from .models import Word
+from search import found
 
 # Create your views here.
 
@@ -14,10 +15,13 @@ def index(request):
     if(searchname != ''):
         data = Word(word=searchname)
         data.save()
+        teachname = found.search(searchname)
     
     datalist = Word.objects.all()
     params = {
         'title':'検索サイト',
         'data':datalist,
+        #'teachname':data1,
     }
+    print(datalist)
     return render(request, 'index.html',params)

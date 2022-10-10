@@ -14,6 +14,12 @@
         <input type = "text" name="searchname">
         <input type="submit" value = "検索">
     </form>
+
+    検索結果<br>
+        {% for item in data %}
+            {{ item.word }}<br>
+        {% endfor %}
+
     履歴<br>
         {% for item in data %}
             {{ item.word }}<br>
