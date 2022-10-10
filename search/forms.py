@@ -1,4 +1,7 @@
 from django import forms
 
 class SearchForm(forms.Form):
-    searchname = forms.CharField(label = 'キーワード')
+    searchname = forms.CharField(
+        max_length = 100,
+        required = True,
+    )

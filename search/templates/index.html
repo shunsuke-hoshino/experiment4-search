@@ -10,8 +10,21 @@
     <h1>{{title}}</h1>
     <form action = "{% url 'index'%}" method="post">
         {% csrf_token %}
-        {{ form }}
+        キーワード<br>
+        <input type = "text">
         <input type="submit" value = "検索">
+    </form>
+        <table>
+            <tr>
+                <th>履歴</th>
+            </tr>
+
+        {% for item in data %}
+            <tr>
+                <td>{{ item.word }}</td>
+            </tr>
+        {% endfor %}
+        </table>
     </form>
 </body>
 </html>

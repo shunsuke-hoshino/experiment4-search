@@ -1,16 +1,21 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .forms import SearchForm
+from .models import Word
 
 # Create your views here.
 
 def index(request):
+    form = SearchForm(request.POST)
+    searchname = form['searchname'].data or ''
+    print(str(searchname))
+    if(searchname != ''):
+        data = Word(word=searchname)
+        data.save()
+    
+    datalist = Word.objects.all()
     params = {
         'title':'検索サイト',
-        'form': SearchForm(),
+        'data':datalist,
     }
-    if(request.method == 'POST'):
-        params['form'] = SearchForm(request.POST)
-        a = SearchForm(request.POST)
-        print(a)
     return render(request, 'index.html',params)
