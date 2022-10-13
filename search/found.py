@@ -2,7 +2,7 @@ import csv
 
 def search(word):
     searchname = word
-    csv_file = open("search\\db\\kaken.csv","r",encoding="UTF-8")
+    csv_file = open("\tmp\8daaccf9c411f4e\\search\\db\\kaken.csv","r",encoding="UTF-8")
 
     reader = csv.reader(csv_file)
     header = next(reader)
