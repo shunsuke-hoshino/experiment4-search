@@ -11,11 +11,17 @@ def search(word):
     j = header.index("研究開始時の研究の概要")
     count = 0
     personlist= []
+    data = []
 
     for row in reader :
         person = row[i]
-        topic = row[j]
-        if word in topic:
+        if not "福岡工業大学" in person:
+            continue
+        text = row[j]
+        data.append([person, text])
+
+    for person, text in data:
+        if searchname in text:
             personlist.append(person)
             count = count + 1
 
