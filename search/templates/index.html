@@ -10,17 +10,17 @@
     <h1>{{title}}</h1>
     <form action = "{% url 'index'%}" method="post">
         {% csrf_token %}
-        キーワード<br>
+        <B>キーワード</B><br>
         <input type = "text" name="searchname">
         <input type="submit" value = "検索">
     </form>
 
-    検索結果<br>
+    <B>検索結果</B><br>
         {% for x in name %}
             {{ x }}<br>
         {% endfor %}
     <br>
-    履歴<br>
+    <B>履歴</B><br>
         {% for item in data %}
             {{ item.word }}<br>
         {% endfor %}
